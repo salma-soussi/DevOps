@@ -21,6 +21,11 @@ pipeline {
 
          stage('Build frontend') {
             agent any
+             when {
+                changeset "**/paper-kit-2-angular-master/**"
+                beforeAgent true
+            }
+
             steps {
                 dir('paper-kit-2-angular-master'){
                     sh 'docker build -t soussisalma/frontend:$BUILD_ID .'
