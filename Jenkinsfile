@@ -1,4 +1,3 @@
-
 pipeline {
     agent none
     environment {
@@ -18,13 +17,20 @@ pipeline {
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
-        stage('Build frontend') {
+
+
+         stage('Build frontend') {
             agent any
+             when {
+                changeset "**/paper-kit-2-angular-master/**"
+                beforeAgent true
+            }
+
             steps {
                 dir('paper-kit-2-angular-master'){
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID .'
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID'
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID'
+                    sh 'docker build -t soussisalma/frontend:$BUILD_ID .'
+                    sh 'docker push soussisalma/frontend:$BUILD_ID'
+                    sh 'docker rmi soussisalma/frontend:$BUILD_ID'
                     sh 'docker logout'
                 }
             }
@@ -33,13 +39,14 @@ pipeline {
             agent any
             steps {
                 dir('plantManagement'){
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID .'
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'
+                    sh 'docker build -t soussisalma/backend:$BUILD_ID .'
+                    sh 'docker push soussisalma/backend:$BUILD_ID'
+                    sh 'docker rmi soussisalma/backend:$BUILD_ID'
                     sh 'docker logout'
                 }
             }
         }
- 
+
     }
 }
+
