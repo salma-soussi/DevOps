@@ -7,6 +7,8 @@ spec:
     matchLabels:
       app: plant-management-back
   replicas: 5
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -14,7 +16,7 @@ spec:
     spec:
       containers:
         - name: plant-management-back
-          image: ...
+          image: soussisalma/backend:19
 # Image that will be used to containers in the cluster
           imagePullPolicy: IfNotPresent
           ports:
