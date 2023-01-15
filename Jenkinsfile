@@ -1,4 +1,3 @@
-
 pipeline {
     agent none
     environment {
@@ -12,20 +11,21 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/salma-soussi/DevOps.git'
             }
         }
-stage('Init'){
+        stage('Init'){
             agent any
             steps{
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
 
-        stage('Build frontend') {
+
+         stage('Build frontend') {
             agent any
             steps {
                 dir('paper-kit-2-angular-master'){
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID .'
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID'
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/frontend:$BUILD_ID'
+                    sh 'docker build -t soussisalma/frontend:$BUILD_ID .'
+                    sh 'docker push soussisalma/frontend:$BUILD_ID'
+                    sh 'docker rmi soussisalma/frontend:$BUILD_ID'
                     sh 'docker logout'
                 }
             }
@@ -34,13 +34,14 @@ stage('Init'){
             agent any
             steps {
                 dir('plantManagement'){
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID .'
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'
-                    sh 'docker rmi $DOCKERHUB_CREDENTIALS_USR/backend:$BUILD_ID'
+                    sh 'docker build -t soussisalma/backend:$BUILD_ID .'
+                    sh 'docker push soussisalma/backend:$BUILD_ID'
+                    sh 'docker rmi soussisalma/backend:$BUILD_ID'
                     sh 'docker logout'
                 }
             }
         }
- 
+
     }
 }
+
