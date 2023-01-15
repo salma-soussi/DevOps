@@ -1,11 +1,11 @@
 # Docker Build Maven Stage
-FROM maven:3-jdk-11-slim AS build
+FROM maven:3-openjdk-17-slim AS build
 # Copy folder in docker
 WORKDIR /app
 COPY ./ /app
 RUN mvn clean install -DskipTests
 # Run spring boot in Docker
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-jdk-slim
 COPY --from=build /app/target/*.jar app.jar
 ENV PORT 8090
 EXPOSE $PORT
