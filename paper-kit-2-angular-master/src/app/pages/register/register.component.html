@@ -1,0 +1,253 @@
+<div class="wrapper">
+  <div
+    class="page-header"
+    style="background-image: url('./assets/img/login-image.jpg')"
+  >
+    <div class="filter"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-8 mr-auto ml-auto">
+          <div class="card card-register" style="max-width: 1000px">
+            <h2 class="title">Welcome</h2>
+            <div class="social-line text-center"></div>
+            <form
+              class="register-form"
+              (ngSubmit)="onSubmit(addForm)"
+              #addForm="ngForm"
+            >
+              <div class="row">
+                <div class="col-lg-6 col-sm-4">
+                  <label>First name</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-single-02"></i>
+                      </span>
+                    </div>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="First name"
+                      ngModel
+                      #nomref="ngModel"
+                      name="name"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-4">
+                  <label>Last name</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-single-02"></i>
+                      </span>
+                    </div>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      ngModel
+                      #nomref="ngModel"
+                      name="lastName"
+                      placeholder="Last name"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-4">
+                  <label>Email</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-email-85"></i>
+                      </span>
+                    </div>
+
+                    <input
+                      type="text"
+                      class="form-control"
+                      ngModel
+                      #nomref="ngModel"
+                      name="email"
+                      placeholder="Email"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-4">
+                  <label>Password</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-key-25"></i>
+                      </span>
+                    </div>
+
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Password"
+                      ngModel
+                      #nomref="ngModel"
+                      name="password"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-4">
+                  <label>Number</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-pin-3"></i>
+                      </span>
+                    </div>
+
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Number"
+                      ngModel
+                      #nomref="ngModel"
+                      name="num"
+                      (focus)="focus = true"
+                      (blur)="focus = false"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-4">
+                  <label>Street</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-map-big"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Street"
+                      ngModel
+                      #nomref="ngModel"
+                      name="rue"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-4">
+                  <label>City</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-istanbul"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="City"
+                      ngModel
+                      #nomref="ngModel"
+                      name="ville"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-4">
+                  <label>Code Postal</label>
+                  <div
+                    class="input-group form-group-no-border"
+                    [ngClass]="{ 'input-group-focus': focus1 === true }"
+                  >
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-planet"></i>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Code Postal"
+                      ngModel
+                      #nomref="ngModel"
+                      name="password"
+                      (focus)="focus1 = true"
+                      (blur)="focus1 = false"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6 col-sm-4">
+                  <div class="mb-3">
+                    <label for="photo" class="form-label">Photo</label>
+                    <input
+                      class="form-control"
+                      ngModel
+                      name="photo"
+                      type="file"
+                      id="photo"
+                      (change)="selectImage($event)"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-danger btn-block btn-round" type="submit">
+                Register
+              </button>
+            </form>
+            <div class="login" style="text-align: center">
+              <p>
+                Already have an account?
+                <a
+                  [routerLink]="['/login']"
+                  href="javascript:void(0)"
+                  style="color: #e3391b; margin-top: 25px"
+                  >Log in</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer register-footer text-center">
+        <h6>
+          © {{ test | date : "yyyy" }}, made with
+          <i class="fa fa-heart heart"></i> by Salma Soussi
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>

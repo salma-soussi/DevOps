@@ -1,0 +1,231 @@
+<div class="wrapper">
+  <div
+    class="page-header page-header-xs"
+    style="
+      background-image: url('./assets/img/mark-harpur-K2s_YE031CA-unsplash.jpg');
+    "
+  >
+    <div class="filter"></div>
+  </div>
+  <div class="main">
+    <div class="section">
+      <div class="container">
+        <div class="row title-row">
+          <div class="col-md-2">
+            <h4 class="shop">Shop</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7 col-sm-6">
+            <div class="ml-auto mr-auto" id="carousel">
+              <div class="card page-carousel">
+                <ngb-carousel
+                  class="carousel slide"
+                  tabindex="0"
+                  style="display: block"
+                >
+                  <ng-template ngbSlide>
+                    <img
+                      src="http://localhost:8090/api/plant/getImage/{{
+                        plant.id
+                      }}"
+                      alt="Random first slide"
+                      class="d-block img-fluid"
+                    />
+                  </ng-template>
+                  <ng-template ngbSlide [ngIf]="photos.photo2 != null">
+                    <img
+                      src="http://localhost:8090/api/plant/getImage2/{{
+                        plant.id
+                      }}"
+                      alt="Random second slide"
+                    />
+                  </ng-template>
+                  <ng-template ngbSlide [ngIf]="photos.photo3 != null">
+                    <img
+                      src="http://localhost:8090/api/plant/getImage3/{{
+                        plant.id
+                      }}"
+                      alt="Random third slide"
+                    />
+                  </ng-template>
+                  <ng-template ngbSlide *ngIf="photos.photo4 != null">
+                    <img
+                      src="http://localhost:8090/api/plant/getImage4/{{
+                        plant.id
+                      }}"
+                      alt="Random third slide"
+                    />
+                  </ng-template>
+                </ngb-carousel>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-6">
+            <h2>{{ plant.name }}</h2>
+            <span class="text-success" *ngFor="let c of plant.categories">{{
+              c.name
+            }}</span>
+            <h4 class="price">
+              <strong>{{ plant.price }} TD</strong>
+            </h4>
+            <hr />
+            <p>
+              {{ plant.description }}
+            </p>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <h4>Quantity</h4>
+                <div class="form-group" style="margin-top: 10px">
+                  <div class="td-number td-quantity">
+                    1
+                    <div class="btn-group" style="margin-left: 20px">
+                      <button class="btn btn-sm btn-border btn-round">-</button
+                      ><button class="btn btn-sm btn-border btn-round">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col-md-7 offset-md-5 col-sm-8">
+                <button class="btn btn-danger btn-block btn-round">
+                  Add to Cart &nbsp;<i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section-nude-gray">
+      <div class="container container-tim">
+        <div class="title" id="comments">
+          <h3>Comments Area</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <div class="media-area">
+              <h3>Comments · {{ comments.length }}</h3>
+              <div class="media" *ngFor="let c of comments">
+                <a class="pull-left" href="javascript:void(0)" *ngIf="c.admin"
+                  ><div class="avatar">
+                    <img
+                      alt="..."
+                      class="media-object"
+                      src="http://localhost:8090/api/visitor/getImageAdmin/{{
+                        c.admin.id
+                      }}"
+                    /></div
+                ></a>
+                <div class="media-body" *ngIf="c.admin">
+                  <h5 class="media-heading">
+                    {{ c.admin.name }} {{ c.admin.lastName }}
+                  </h5>
+                  <div class="pull-right">
+                    <h6 class="text-muted">Sep 11, 11:53 AM</h6>
+                  </div>
+                  <p>
+                    {{ c.text }}
+                  </p>
+                </div>
+                <a class="pull-left" href="javascript:void(0)" *ngIf="c.visitor"
+                  ><div class="avatar">
+                    <img
+                      alt="..."
+                      class="media-object"
+                      src="http://localhost:8090/api/visitor/getImageVistor/{{
+                        c.visitor.id
+                      }}"
+                    /></div
+                ></a>
+                <div class="media-body" *ngIf="c.visitor">
+                  <h5 class="media-heading">
+                    {{ c.visitor.name }} {{ c.visitor.lastName }}
+                  </h5>
+                  <div class="pull-right">
+                    <h6 class="text-muted">Sep 11, 11:53 AM</h6>
+                  </div>
+                  <p>
+                    {{ c.text }}
+                  </p>
+                </div>
+              </div>
+              <br />
+              <div
+                class="pagination-area pagination-primary"
+                *ngIf="comments.length > 0"
+              >
+                <ngb-pagination
+                  [collectionSize]="comments.length / 10"
+                  [(page)]="page"
+                  aria-label="Default pagination"
+                ></ngb-pagination>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section-gray">
+      <div class="container tim-container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h3 class="text-center">Post your comment</h3>
+            <form
+              class="media media-post"
+              (ngSubmit)="onSubmit(addForm)"
+              #addForm="ngForm"
+              *ngIf="id"
+            >
+              <a class="author" href="javascript:void(0)"
+                ><div class="avatar">
+                  <img
+                    alt="64x64"
+                    class="media-object"
+                    src="http://localhost:8090/api/visitor/getImageVistor/{{
+                      id
+                    }}"
+                  /></div
+              ></a>
+              <div class="media-body">
+                <textarea
+                  class="form-control border-input"
+                  placeholder="Write some nice stuff or nothing..."
+                  rows="6"
+                  ngModel
+                  #nomref="ngModel"
+                  name="text"
+                ></textarea>
+                <div class="media-footer">
+                  <button
+                    type="submit"
+                    class="btn btn-info btn-wd pull-right"
+                    href="javascript:void(0)"
+                  >
+                    Post Comment
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div
+              class="text-center"
+              style="margin-top: 35px"
+              *ngIf="id == null"
+            >
+              You need to sign up to leve a comment.<a
+                [routerLink]="['/login']"
+                href="javascript:void(0)"
+                style="color: #e3391b; margin-top: 25px"
+                >Log in</a
+              >.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
