@@ -12,12 +12,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/salma-soussi/DevOps.git'
             }
         }
-        stage('Init'){
+stage('Init'){
             agent any
             steps{
             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
+
         stage('Build frontend') {
             agent any
             steps {
