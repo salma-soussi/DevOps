@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: plant-management-back
+spec:
+  selector:
+    matchLabels:
+      app: plant-management-back
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: plant-management-back
+    spec:
+      containers:
+        - name: plant-management-back
+          image: ...
+# Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8090 
+# The port that the container is running on in the cluster

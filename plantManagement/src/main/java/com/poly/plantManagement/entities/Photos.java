@@ -63,10 +63,6 @@ public class Photos {
 		this.id = id;
 		this.photo1 = photo1;
 	}
-	public Photos() {
-		super();
-	}
-
 	public Integer getId() {
 		return id;
 	}

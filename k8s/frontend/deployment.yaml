@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: plant-management-front
+spec:
+  selector:
+    matchLabels:
+      app: plant-management-front
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: plant-management-front
+    spec:
+      containers:
+        - name: plant-management-front
+          image: soussisalma/frontend:15
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

@@ -26,19 +26,6 @@ public class Users {
     private String password ;
     private String photo ;
     
-	public Users(Integer id, String name, String lastName, String email, String password, String photo) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.photo = photo;
-	}
-	
-	public Users() {
-		super();
-	}
 	public Integer getId() {
 		return id;
 	}

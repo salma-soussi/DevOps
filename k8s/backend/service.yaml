@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: plant-management-back-service
+  name: backend
+spec:
+  ports:
+  - port: 8090
+  selector:
+    service: plant-management-back
+  type: LoadBalancer
+
