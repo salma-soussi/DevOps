@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: plant-management-back
-          image: soussisalma/backend:19
+          image: soussisalma/backend:21
           ports:
             - containerPort: 8090 
       imagePullSecrets:

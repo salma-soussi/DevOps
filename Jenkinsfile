@@ -21,10 +21,10 @@ pipeline {
 
          stage('Build frontend') {
             agent any
-             when {
-                changeset "**/paper-kit-2-angular-master/**"
-                beforeAgent true
-            }
+            //  when {
+            //     changeset "**/paper-kit-2-angular-master/**"
+            //     beforeAgent true
+            // }
 
             steps {
                 dir('paper-kit-2-angular-master'){
