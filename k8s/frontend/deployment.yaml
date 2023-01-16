@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: plant-management-front
   replicas: 5
-    strategy:
+  strategy:
     type: RollingUpdate
   template:
     metadata:
@@ -17,6 +17,7 @@ spec:
       containers:
         - name: plant-management-front
           image: soussisalma/frontend:15
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+      imagePullSecrets:
+      - name: regcred

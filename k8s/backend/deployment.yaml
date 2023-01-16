@@ -17,8 +17,7 @@ spec:
       containers:
         - name: plant-management-back
           image: soussisalma/backend:19
-# Image that will be used to containers in the cluster
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8090 
-# The port that the container is running on in the cluster
+      imagePullSecrets:
+      - name: regcred
