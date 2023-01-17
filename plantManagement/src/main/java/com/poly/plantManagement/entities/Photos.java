@@ -34,6 +34,8 @@ public class Photos {
 	@OneToOne(mappedBy = "photos",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private Plant plant;
 	
+	public Photos() {
+	}
 	public Photos(Integer id, String photo1, String photo2, String photo3, String photo4) {
 		super();
 		this.id = id;
