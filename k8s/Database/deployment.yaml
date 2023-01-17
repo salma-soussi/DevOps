@@ -60,12 +60,12 @@ spec:
                   key: name
             - name: POSTGRES_USER
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: postgres-conf
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: postgres-conf
                   key: postgres_password
           ports:
