@@ -57,20 +57,23 @@ spec:
           imagePullPolicy: "IfNotPresent"
           env:
             - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: postgres_user
+              value: postgres
+              # valueFrom:
+                # secretKeyRef:
+                #   name: postgres-secret
+                #   key: postgres_user
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: postgres-secret
-                  key: postgres_password
+              value: postgres
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-secret
+              #     key: postgres_password
             - name: POSTGRES_DB # Setting Database Name from a 'ConfigMap'
-              valueFrom:
-                configMapKeyRef:
-                  name: postgres-conf
-                  key: name
+              value: plantManagement
+              # valueFrom:
+              #   configMapKeyRef:
+              #     name: postgres-conf
+              #     key: name
           ports:
             - containerPort: 5432
               name: postgres
