@@ -61,12 +61,12 @@ spec:
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: postgres-conf
+                  name: postgres-secret
                   key: postgres_user
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres-conf
+                  name: postgres-secret
                   key: postgres_password
           ports:
             - containerPort: 5432
