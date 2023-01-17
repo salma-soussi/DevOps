@@ -33,12 +33,12 @@ spec:
             - name: POSTGRES_USER  # Setting Database username from Secret
               valueFrom:
                 secretKeyRef:
-                  name: postgres-credentials # Secret Name
+                  name: postgres-secret # Secret Name
                   key: postgres_user
             - name: POSTGRES_PASSWORD # Setting Database password from Secret
               valueFrom:
                 secretKeyRef:
-                  name: postgres-credentials
+                  name: postgres-secret
                   key: postgres_password
       imagePullSecrets:
       - name: regcred
