@@ -5,3 +5,5 @@ metadata:
 data:
   host: postgres
   name: plantManagement
+  postgres_user: postgres
+  postgres_password: postgres

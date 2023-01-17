@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: plant-management-front-service
-  name: backend
+  name: front
 spec:
   ports:
   - port: 80

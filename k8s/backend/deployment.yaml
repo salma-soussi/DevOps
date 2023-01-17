@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: plant-management-back
-          image: soussisalma/backend:31
+          image: soussisalma/backend:32
           ports:
             - containerPort: 8090 
           env:   # Setting Enviornmental Variables
