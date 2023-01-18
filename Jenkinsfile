@@ -36,10 +36,10 @@ pipeline {
         }
         stage('Build backend') {
             agent any
-            // when {
-            //     changeset "**/plantManagement/**"
-            //     beforeAgent true
-            // }
+            when {
+                changeset "**/plantManagement/**"
+                beforeAgent true
+            }
             steps {
                 dir('plantManagement'){
                     sh 'docker build -t soussisalma/backend:$BUILD_ID .'
