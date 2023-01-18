@@ -6,6 +6,6 @@ COPY ./ /app
 RUN mvn clean install -DskipTests
 # Run spring boot in Docker
 FROM tomcat:latest
-ADD /app/target/backend.war /usr/local/tomcat/webapps/
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps
 EXPOSE 8090
 CMD ["catalina.sh", "run"]
