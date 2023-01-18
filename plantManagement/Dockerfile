@@ -5,8 +5,7 @@ WORKDIR /app
 COPY ./ /app
 RUN mvn clean install -DskipTests
 # Run spring boot in Docker
-FROM openjdk:17-jdk-slim
-COPY --from=build /app/target/*.jar backend.jar
-ENV PORT 8090
-EXPOSE $PORT
-ENTRYPOINT ["java","-jar","-Xmx1024M","-Dserver.port=${PORT}","backend.jar"]
+FROM tomcat:latest
+COPY --from=build /app/target/*.war /usr/local/tomcat/webapps/backend.war
+EXPOSE 8090
+CMD ["catalina.sh", "run"]

@@ -31,22 +31,30 @@ pipeline {
                     sh 'docker build -t soussisalma/frontend:$BUILD_ID .'
                     sh 'docker push soussisalma/frontend:$BUILD_ID'
                     sh 'docker rmi soussisalma/frontend:$BUILD_ID'
-                    sh 'docker logout'
                 }
             }
         }
         stage('Build backend') {
             agent any
+            when {
+                changeset "**/plantManagement/**"
+                beforeAgent true
+            }
             steps {
                 dir('plantManagement'){
                     sh 'docker build -t soussisalma/backend:$BUILD_ID .'
                     sh 'docker push soussisalma/backend:$BUILD_ID'
                     sh 'docker rmi soussisalma/backend:$BUILD_ID'
-                    sh 'docker logout'
                 }
             }
         }
 
+        stage('Logout'){
+            agent any
+            steps{
+                sh 'docker logout'
+            }
+        }
     }
 }
 

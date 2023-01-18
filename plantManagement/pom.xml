@@ -49,6 +49,11 @@
 		</dependency>
 		<!-- I added this -->
 		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-tomcat</artifactId>
+		   <scope>provided</scope>
+		</dependency>
+		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
 		</dependency>
@@ -76,7 +81,7 @@
         </dependency>
 		
 	</dependencies>
-
+	<packaging>war</packaging>
 	<build>
 		<plugins>
 			<plugin>
