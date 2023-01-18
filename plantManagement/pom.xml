@@ -11,7 +11,7 @@
 	<groupId>com.poly</groupId>
 	<artifactId>plantManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Plant Management</name>
 	<description>Plant management project</description>
 	<properties>
