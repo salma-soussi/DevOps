@@ -11,6 +11,7 @@
 	<groupId>com.poly</groupId>
 	<artifactId>plantManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>Plant Management</name>
 	<description>Plant management project</description>
 	<properties>
@@ -61,7 +62,10 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-		
+		<dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
 		<dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-jasper</artifactId>
@@ -81,7 +85,7 @@
         </dependency>
 		
 	</dependencies>
-	<packaging>war</packaging>
+	
 	<build>
 		<plugins>
 			<plugin>
